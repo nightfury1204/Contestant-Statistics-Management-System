@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Contestant Statistics</title>
+
+    <!-- build:css_ext -->
+    <!-- endbuild -->
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="./js_ext/jquery.min.js"></script>
+    <script src="./js_ext/bootstrap.min.js"></script>
+  </head>
+  <body>     
+
+	 <nav class="navbar navbar-default">	  
+	    <div class="navbar-header">	     
+	      <h3 style="padding-left: 20px;">Contestant Statistics</h3>
+	    </div>
+
+	    <div class="collapse navbar-collapse" id="myNavbar">
+	      <ul class="nav navbar-nav navbar-right">
+	        <li><a href="#/new">Status</a></li>
+
+	        <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
+
+          <li class="dropdown" style="width: 230px;">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Iasmani Pinazo <span class="glyphicon glyphicon-user pull-right"></span></a>
+          <ul class="dropdown-menu" style="width: 230px;">
+            <li><a href="#">Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
+            <li class="divider"></li>
+            <li><a href="#">User stats <span class="glyphicon glyphicon-stats pull-right"></span></a></li>
+            <li class="divider"></li>
+            <li><a href="#">Messages <span class="badge pull-right"> 42 </span></a></li>
+            <li class="divider"></li>
+            <li><a href="#">Favourites Snippets <span class="glyphicon glyphicon-heart pull-right"></span></a></li>
+            <li class="divider"></li>
+            <li><a href="#">Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
+          </ul>
+         </li>
+
+	      </ul>
+	    </div>	    
+	 </nav>
+    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog">
+            <div class="loginmodal-container">
+              <h1>Login to Your Account</h1><br>
+              <form>
+              <input type="text" name="user" placeholder="Username">
+              <input type="password" name="pass" placeholder="Password">
+              <input type="submit" name="login" class="login loginmodal-submit" value="Login">
+              </form>
+              
+              <div class="login-help">
+              <a href="#">Register</a> - <a href="#">Forgot Password</a>
+              </div>
+            </div>
+          </div>
+    </div>
+     <div class="container" >
+      
+       <!-- load template here-->
+       <div class="row">
+          <div class="col-sm-6 col-sm-offset-3">
+
+              <div id="imaginary_container"  style="text-align: center; padding: 30px;"> 
+
+                <input type="text" class="form-control"  placeholder="Username" id="userName">
+                <br>
+                <button type="button" class="btn btn-default" id="searchUser">
+                  <span class="glyphicon glyphicon-search"></span> Search
+                </button>
+
+              </div>
+
+          </div>
+       </div>
+
+       <!-- table -->
+       <div id="showSubmission" style="text-align: center;">
+          <!-- <img src='./images/loading.gif' class='img-rounded' alt='Loading' width='200' height='186'> -->
+       </div>
+
+
+     </div>
+<!--
+    <footer class="jumbotron footer">
+      <p style="text-align: center;">
+        <small>Project by Nahid and Bipul</small>
+      </p>
+
+   </footer>
+-->
+   <!-- js script-->
+   <script src="./js/status.js"></script>
+    
+  </body>
+
+</html>

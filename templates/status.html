@@ -1,0 +1,18 @@
+ <table class="table table-striped custab">
+        <thead>
+            <tr>
+                <th>Online judge</th>
+                <th>Problem name</th>
+                <th>Language</th>
+                <th>Verdict</th>
+            </tr>
+        </thead>
+           {% for item in items %}
+           <tr>
+           	  <td>Codeforces</td>
+           	  <td>{{ item.problem.name }}</td>
+           	  <td>{{ item.programmingLanguage }}</td>
+           	  <td> {{ item.verdict }}</td>
+           </tr>
+           {% endfor %}
+ </table>
