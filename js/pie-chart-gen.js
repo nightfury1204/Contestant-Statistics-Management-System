@@ -71,8 +71,8 @@ var Piechart = function(options){
         }
 }
 var myCanvas = document.getElementById("myCanvas");
-myCanvas.width = 250;
-myCanvas.height = 250;
+myCanvas.width = 200;
+myCanvas.height = 200;
 
 var myVinyls = {
     "Classical music": 10,
@@ -80,6 +80,7 @@ var myVinyls = {
     "Pop": 20,
     "Jazz": 12
 };
+
 var myLegend = document.getElementById("myLegend");
 var myPiechart = new Piechart(
     {
@@ -90,3 +91,17 @@ var myPiechart = new Piechart(
     }
 );
 myPiechart.draw();
+
+var myCanvas1 = document.getElementById("myCanvas1");
+myCanvas1.width = 200;
+myCanvas1.height = 200;
+var myLegend1 = document.getElementById("myLegend1");
+var myPiechart1 = new Piechart(
+    {
+        canvas:myCanvas1,
+        data:myVinyls,
+        colors:["#fde23e","#f16e23", "#57d9ff","#937e88"],
+        legend: myLegend1
+    }
+);
+myPiechart1.draw();

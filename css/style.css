@@ -130,3 +130,22 @@
     right: 14px;
     z-index: 9;
 }
+/*****User Home ****/
+
+.OJheader {
+   border-bottom: 1px solid #EFF3F8;
+   padding-bottom: 5px;
+   margin-bottom: 10px;
+}
+.OJpiechartblock{
+  border-right: .3px solid #EFF3F8;;
+  padding: 10px;
+}
+.OJcanvas{
+  width: 100px;
+}
+.OJblock{
+  margin-bottom: 30px;
+  border: 3px solid #EFF3F8;
+  background-color: #ffffff;
+}
