@@ -16,11 +16,11 @@ class login extends databaseConnect
 	{
 		dataConnect();
 		$hashpassword = Bcrypt::hashPassword($password);
-		$sql = "Select * From ".$tableName." where username = '".$username."'' and password = '".$hashpassword."' ";
-		$result = mysql_query($conection, $sql);
-		if(mysql_num_rows($result)==1)
+		$sql = "SELECT * FROM ".$tableName." WHERE username = '".$username."'' AND password = '".$hashpassword."' ";
+		$result = $conection->query($sql);
+		if($result->num_rows==1)
 		{
-			$row = mysqli_fetch_assoc($result);
+			$row = $result->fetch_assoc();
 			if(Bcrypt::checkPassword($password, $row["password"]))
 			{
 				dataClose();

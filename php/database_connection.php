@@ -20,15 +20,15 @@ class databaseConnect
 	public function dataConnect()
 	{
 		// Create connection
-		$conection = mysqli_connect($servername, $username, $password, $dbname);
+		$conection = new mysqli($servername, $username, $password, $dbname);
 		// Check connection
-		if (!$conection) {
-			die("Connection failed: " . mysqli_connect_error());
+		if ($conection->connect_error) {
+			die("Connection failed: " . $conection->connect_error;
 		}
 	}
 	public function dataClose()
 	{
-		mysqli_close($conection);
+		$conection->close();
 	}
 }
 
