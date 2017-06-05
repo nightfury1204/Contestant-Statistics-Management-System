@@ -14,27 +14,27 @@ class login extends databaseConnect
 
 	function login_attempt($username, $password)
 	{
-		dataConnect();
+		$this->dataConnect();
 		$hashpassword = Bcrypt::hashPassword($password);
-		$sql = "SELECT * FROM ".$tableName." WHERE username = '".$username."'' AND password = '".$hashpassword."' ";
-		$result = $conection->query($sql);
+		$sql = "SELECT * FROM ".$this->tableName." WHERE username = '".$username."'' AND password = '".$hashpassword."' ";
+		$result = $this->conection->query($sql);
 		if($result->num_rows==1)
 		{
 			$row = $result->fetch_assoc();
 			if(Bcrypt::checkPassword($password, $row["password"]))
 			{
-				dataClose();
+				$this->dataClose();
 				return "1";
 			}
 			else
 			{
-				dataClose();
+				$this->dataClose();
 			    return "-1";
 			}
 		}
 		else
 		{
-			dataClose();
+			$this->dataClose();
 			return "-1";
 		}
 	}

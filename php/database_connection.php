@@ -6,29 +6,27 @@
 class databaseConnect
 {
 	protected $conection;
-	private $servername;
-	private $username;
-	private $password;
-	private $dbname;
-	function __construct(argument)
+	private $servername = "localhost";
+	private $username = "root";
+	private $password = "icui4cu";
+	private $dbname = "Contestant_statistics";
+	function __construct()
 	{
-		$servername = "localhost";
-		$username = "root";
-		$password = "icui4cu";
-		$dbname = "Dinning_System";
+
 	}
 	public function dataConnect()
 	{
 		// Create connection
-		$conection = new mysqli($servername, $username, $password, $dbname);
+		//echo $this->username."\n".$this->servername."\n".$this->password."\n".$this->dbname."\n";
+		$this->conection = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
 		// Check connection
-		if ($conection->connect_error) {
-			die("Connection failed: " . $conection->connect_error;
+		if ($this->conection->connect_error) {
+			die("Connection failed: " . $this->conection->connect_error);
 		}
 	}
 	public function dataClose()
 	{
-		$conection->close();
+		$this->conection->close();
 	}
 }
 
