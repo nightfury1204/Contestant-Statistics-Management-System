@@ -2,6 +2,7 @@
 /**
 * user register
 * update user info
+* return 1 if successful
 *
 */
 class userRegister extends databaseConnection
