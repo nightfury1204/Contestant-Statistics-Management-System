@@ -3,9 +3,6 @@
   <head>
     <meta charset="utf-8">
     <title>Contestant Statistics</title>
-
-    <!-- build:css_ext -->
-    <!-- endbuild -->
     <link rel="stylesheet" href="/Contestant-Statistics-Management-System/css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="/Contestant-Statistics-Management-System/js_ext/jquery.min.js"></script>
@@ -14,90 +11,39 @@
   <body>     
 
 	 <nav class="navbar navbar-default">	  
-	    <div class="navbar-header">	     
-	      <h3 style="padding-left: 20px;">Contestant Statistics</h3>
-	    </div>
+	   <div class="navbar-header">	     
+	     <h3 style="padding-left: 20px;">
+        <a href="/Contestant-Statistics-Management-System/">Contestant Statistics</a>
+       </h3>
+	   </div>
 
-	    <div class="collapse navbar-collapse" id="myNavbar">
+	   <div class="collapse navbar-collapse" id="myNavbar">
 	      <ul class="nav navbar-nav navbar-right">
-	        <li><a href="#/new">Status</a></li>
+	        <li><a href="/Contestant-Statistics-Management-System/templates/signup.html">Sign Up</a></li>
 
 	        <li id="userLoginBar">
             <a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
           </li>
-          <script type="text/javascript">
-            $.ajax({ 
-                type: "GET",
-                url: "/Contestant-Statistics-Management-System/php/userAuth.php",
-                success: function(data){        
-                //alert(data);
-                if(data)
-                  $("#userLoginBar").load("/Contestant-Statistics-Management-System/templates/dropdown-user-bar.html");
-                }
-             });
-            
-          </script>
 
-          <!--
-          <li class="dropdown" style="width: 230px;">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Iasmani Pinazo <span class="glyphicon glyphicon-user pull-right"></span></a>
-            <ul class="dropdown-menu" style="width: 230px;">
-              <li><a href="#">Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
-              <li class="divider"></li>
-              <li><a href="#">User stats <span class="glyphicon glyphicon-stats pull-right"></span></a></li>
-              <li class="divider"></li>
-              <li><a href="#">Messages <span class="badge pull-right"> 42 </span></a></li>
-              <li class="divider"></li>
-              <li><a href="#">Favourites Snippets <span class="glyphicon glyphicon-heart pull-right"></span></a></li>
-              <li class="divider"></li>
-              <li><a href="#">Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
-            </ul>
-         </li>
-         -->
 	      </ul>
 	    </div>	    
 	 </nav>
    
-    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-      <div class="modal-dialog">
-        <div class="loginmodal-container">
-          <h1>Login to Your Account</h1><br>
-          <form id="userLoginFormSubmit" method="POST">
-            <input type="text" name="username" placeholder="Username">
-            <input type="password" name="password" placeholder="Password">
-            <input type="submit" name="login" class="login loginmodal-submit">
-          </form>  
-          <div class="login-help">
-            <a href="#">Register</a> - <a href="#">Forgot Password</a>
+     <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+          <div class="loginmodal-container">
+            <h1>Login to Your Account</h1><br>
+            <form id="userLoginFormSubmit" method="POST">
+              <input type="text" name="username" placeholder="Username">
+              <input type="password" name="password" placeholder="Password">
+              <input type="submit" name="login" class="login loginmodal-submit">
+            </form>  
+            <div class="login-help">
+              <a href="#">Register</a> - <a href="#">Forgot Password</a>
+            </div>
           </div>
-          <script type="text/javascript">
-            $("#userLoginFormSubmit").submit(function(e){
-              
-              //alert("sdfds");
-              $.ajax({
-                type: "POST",
-                url: "/Contestant-Statistics-Management-System/php/user_login_attempt.php",
-                data: $("#userLoginFormSubmit").serialize(),
-                success: function(data1){
-                  if(data1 == "success")
-                  {
-                    window.location.href = "http://localhost/Contestant-Statistics-Management-System/";
-                  }
-                  else{
-                    alert(data1);  
-                  }
-                  
-                },
-                error: function(e){
-                  alert("error");
-                }
-              });
-             e.preventDefault();//avoid to execute the actual submit of the form.
-            });
-          </script>
         </div>
       </div>
-    </div>
 
      <div class="container" >
       
@@ -134,8 +80,9 @@
    </footer>
 -->
    <!-- js script-->
-   <script src="./js/status.js"></script>
-    
+   <script type="text/javascript" src="/Contestant-Statistics-Management-System/js/submit_login_form.js"></script>
+   <script type="text/javascript" src="/Contestant-Statistics-Management-System/js/userlogin_navbar.js"></script>
+   <script src="/Contestant-Statistics-Management-System/js/status.js"></script>
   </body>
 
 </html>

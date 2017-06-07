@@ -2,16 +2,52 @@
 <html>
 <head>
     <title>sign up</title>
+    <link rel="stylesheet" href="/Contestant-Statistics-Management-System/css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="/Contestant-Statistics-Management-System/js_ext/jquery.min.js"></script>
+    <script src="/Contestant-Statistics-Management-System/js_ext/bootstrap.min.js"></script>
 </head>
 <body style="background-color: #EFF3F8;">
-    
+     <nav class="navbar navbar-default">      
+       <div class="navbar-header">       
+         <h3 style="padding-left: 20px;">
+        <a href="/Contestant-Statistics-Management-System/">Contestant Statistics</a>
+       </h3>
+       </div>
+
+       <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/Contestant-Statistics-Management-System/templates/signup.html">Sign Up</a></li>
+
+            <li id="userLoginBar">
+            <a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
+          </li>
+
+          </ul>
+        </div>      
+     </nav>
+   
+     <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+          <div class="loginmodal-container">
+            <h1>Login to Your Account</h1><br>
+            <form id="userLoginFormSubmit" method="POST">
+              <input type="text" name="username" placeholder="Username">
+              <input type="password" name="password" placeholder="Password">
+              <input type="submit" name="login" class="login loginmodal-submit">
+            </form>  
+            <div class="login-help">
+              <a href="#">Register</a> - <a href="#">Forgot Password</a>
+            </div>
+          </div>
+        </div>
+      </div>
     <div class="container">
-    <div class="row" style="margin-top: 30px;">
+    <div class="row" >
         <div class="col-md-4"> </div>
         <div class="col-xs-12 col-sm-12 col-md-4 well well-sm">
             <legend><a href="#"><i class="glyphicon glyphicon-globe"></i></a> Sign up!</legend>
-            <form action="#" method="post" class="form" role="form">
+            <form id="signupFormSubmit" method="post" class="form" role="form">
             <div class="row">
                 <div class="col-xs-6 col-md-6">
                     <input class="form-control" style="margin-bottom: 10px;" name="firstname" placeholder="First Name" type="text"
@@ -27,7 +63,7 @@
             <input class="form-control"style="margin-bottom: 10px;" name="reenterpassword" placeholder="Re-enter Password" type="password" required />
             <input class="form-control" style="margin-bottom: 10px;" name="country" placeholder="Country" type="text" required />
             <input class="form-control" style="margin-bottom: 10px;" name="institute" placeholder="Institute" type="text" required/>
-            <input class="form-control" style="margin-bottom: 10px;" name="codeforcesusername" placeholder="Codeforces User Name" type="text" />
+            <input class="form-control" style="margin-bottom: 10px;" name="cfusername" placeholder="Codeforces User Name" type="text" />
             <input class="form-control" style="margin-bottom: 10px;" name="uvausername" placeholder="Uva User Name" type="text" />
             <!-- 
             <label for="">
@@ -59,7 +95,6 @@
             </label>
             -->
             <br />
-            <br />
             <button class="btn btn-lg btn-primary btn-block" type="submit">
                 Sign up</button>
             </form>
@@ -67,5 +102,9 @@
     </div>
 </div>
 
+
+    <script type="text/javascript" src="/Contestant-Statistics-Management-System/js/submit_login_form.js"></script>
+    <script type="text/javascript" src="/Contestant-Statistics-Management-System/js/userlogin_navbar.js"></script>
+    <script type="text/javascript" src="/Contestant-Statistics-Management-System/js/submit_signup_form.js"></script>
 </body>
 </html>

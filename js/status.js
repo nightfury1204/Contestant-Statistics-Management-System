@@ -4,7 +4,7 @@ $("#searchUser").click(function(){
 	$("#showSubmission").html(loadtext);
 	const username = document.getElementById('userName').value;
 	//alert(username);
-	const urlName = "http://codeforces.com/api/";
+	const urlName = "http://codeforces.com/api/user.status?handle="+username+"&from=1&count=10";
 	//alert(urlName);
 	$.ajax({ 
    		type: "GET",

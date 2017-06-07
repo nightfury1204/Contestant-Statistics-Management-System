@@ -5,9 +5,9 @@
 * return 1 if successful
 *
 */
-require_once('database_connection.php');
+require_once('signup_validation.php');
 require_once('Bcrypt.php');
-class userRegister extends databaseConnect
+class userRegister extends signupFormValidation
 {
 	private $userInfoTable = "user_info";
 	private $userAccountTable = "user_account";
@@ -17,8 +17,12 @@ class userRegister extends databaseConnect
 		# code...
 	}
 	**/
-	function addNewUser($username, $firstname, $lastname , $email, $country, $institute, $codeforcesuser, $uvauser, $password)
+	function addNewUser($username, $firstname, $lastname , $email, $country, $institute, $codeforcesuser, $uvauser, $password,$reenterpassowrd)
 	{
+		if(!$this->formValidation($username, $email, $password,$reenterpassowrd))
+		{
+			return false;
+		}
 		$this->dataConnect();
 		$sql= "INSERT INTO ".$this->userInfoTable." (username,firstname,lastname,email,country,institute,codeforcesuser,uvauser) VALUES ('".$username."', '".$firstname."', '".$lastname."', '".$email."', '".$country."', '".$institute."', '".$codeforcesuser."', '".$uvauser."' )";
 		if($this->conection->query($sql)===TRUE)
@@ -28,20 +32,22 @@ class userRegister extends databaseConnect
 			if($this->conection->query($sql)===TRUE)
 			{
 				$this->dataClose();
-				return "1";	
+				return true;	
 			}
 			else
 			{
 				$sql = "DELETE FROM ".$this->userInfoTable." WHERE username = '".$username."'";
 				$this->conection->query($sql);
 				$this->dataClose();
-				return "-1";
+				$this->errorMsg = $this->errorMsg."Database Insertion Problem;";
+				return false;
 			}
 		}
 		else
 		{
 			$this->dataClose();
-			return "-1";
+			$this->errorMsg = $this->errorMsg."Database Insertion Problem;";
+			return false;
 		}
 	}
 	function updateUserInfo($username, $firstname, $lastname , $email, $country, $institute, $codeforcesuser, $uvauser)
@@ -51,12 +57,13 @@ class userRegister extends databaseConnect
 		if($this->conection->query($sql)===TRUE)
 		{
 			$this->dataClose();
-			return "1";	
+			return true;	
 		}
 		else
 		{
 			$this->dataClose();
-			return "-1";
+			$this->errorMsg = $this->errorMsg."Database Insertion Problem;";
+			return false;
 		}
 	}
 
