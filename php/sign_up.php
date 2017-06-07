@@ -6,10 +6,11 @@
 *
 */
 require_once('database_connection.php');
-class userRegister extends databaseConnection
+require_once('Bcrypt.php');
+class userRegister extends databaseConnect
 {
-	private userInfoTable = "user_info";
-	private userAccountTable = "user_account";
+	private $userInfoTable = "user_info";
+	private $userAccountTable = "user_account";
 	/**
 	function __construct()
 	{
@@ -23,7 +24,7 @@ class userRegister extends databaseConnection
 		if($this->conection->query($sql)===TRUE)
 		{
 			$password = Bcrypt::hashPassword($password);
-			$sql= "insert into ".$this->userAccountTable." (username,email,lastname,email, password) values ('".$username."', '".$email."', '".$password."' )";
+			$sql= "insert into ".$this->userAccountTable." (username,email, password) values ('".$username."', '".$email."', '".$password."' )";
 			if($this->conection->query($sql)===TRUE)
 			{
 				$this->dataClose();
@@ -60,4 +61,7 @@ class userRegister extends databaseConnection
 	}
 
 }
+
+//$addUser = new userRegister();
+//echo $addUser->addNewUser("user1","dsf","dsfd","sadfds@gmail.com","ban","cuet","cf","uva","1234");
 ?>

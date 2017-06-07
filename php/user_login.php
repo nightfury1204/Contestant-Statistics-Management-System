@@ -16,8 +16,8 @@ class login extends databaseConnect
 	function login_attempt($username, $password)
 	{
 		$this->dataConnect();
-		$hashpassword = Bcrypt::hashPassword($password);
-		$sql = "SELECT * FROM ".$this->tableName." WHERE username = '".$username."'' AND password = '".$hashpassword."' ";
+		$sql = "SELECT * FROM ".$this->tableName." WHERE username = '".$username."'";
+		//echo $sql."<br>";
 		$result = $this->conection->query($sql);
 		if($result->num_rows==1)
 		{
@@ -25,34 +25,35 @@ class login extends databaseConnect
 			if(Bcrypt::checkPassword($password, $row["password"]))
 			{
 				$this->dataClose();
-				return "1";
+				return true;
 			}
 			else
 			{
 				$this->dataClose();
-			    return "-1";
+			    return false;
 			}
 		}
 		else
 		{
 			$this->dataClose();
-			return "-1";
+			return false;
 		}
 	}
 }
-
+/*
 $tryLogin = new login();
-$userName = $_POST["username"];
-$passWord = $_POST["password"];
+$userName = "user1";//$_POST["username"];
+$passWord = "1243";//$_POST["password"];
 
-if(tryLogin.login_attempt($userName, $passWord)=="1")
+if($tryLogin->login_attempt($userName, $passWord)==="1")
 {
-	/*redirect to user home*/
-	header("Location:home");
+	//redirect to user home
+	//header("Location:home");
+	echo "login successful";
 }
 else
 {
 	echo "WA";
 }
-
+*/
 ?>
