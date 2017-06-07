@@ -22,13 +22,16 @@ class Codeforces extends databaseConnect
 {
 	private $baseUrl= "http://codeforces.com/api/";
 	private $userSubmissionsTable = "user_submission";
-	private $verdictId = array("OK"=>90,"COMPILATION_ERROR"=>30,"RUNTIME_ERROR"=>40,"WRONG_ANSWER"=>70,"PRESENTATION_ERROR"=>80,"TIME_LIMIT_EXCEEDED"=>50,"MEMORY_LIMIT_EXCEEDED"=>60,"FAILED"=>10);
-	
+	private $verdictId = array("OK"=>"90","COMPILATION_ERROR"=>"30","RUNTIME_ERROR"=>"40","WRONG_ANSWER"=>"70","PRESENTATION_ERROR"=>"80","TIME_LIMIT_EXCEEDED"=>"50","MEMORY_LIMIT_EXCEEDED"=>"60","FAILED"=>"10");
+	/***
 	function __construct()
 	{
 		//--
 		//$baseUrl = "sdfsdf";
+		//parent::__construct();
+
 	}
+	***/
 	function userSubmissions($user)
 	{
 		
@@ -48,8 +51,15 @@ class Codeforces extends databaseConnect
 				$submissionTime = $resData['creationTimeSeconds'];
 				$problemId = $resData['problem']['contestId']."-".$resData['problem']['index'];
 				$problemName = $resData['problem']['name'];
-				$language = $resData['programmingLanguage'];
-				$verdict = $resData['verdict'];
+				$language = $resData['programmingLanguage'];				
+				if(array_key_exists( $resData['verdict'], $this->verdictId))
+				{
+					$verdict = $this->verdictId[ $resData['verdict'] ];
+				}
+				else
+				{
+					$verdict = "00";
+				}				
 				$runtime = $resData['timeConsumedMillis'];
 				$sql= "INSERT INTO ".$this->userSubmissionsTable." (username, oj, submissionId,submissionTime,problemId, problemName, language, verdict, runtime ) VALUES ('".$username."', '".$oj."', '".$submissionId."', '".$submissionTime."', '".$problemId."', '".$problemName."', '".$language."', '".$verdict."', '".$runtime."' )";
 

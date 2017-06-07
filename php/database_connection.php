@@ -10,10 +10,12 @@ class databaseConnect
 	private $username = "root";
 	private $password = "icui4cu";
 	private $dbname = "Contestant_statistics";
+	/**
 	function __construct()
 	{
-
+		echo "this is from parent\n";
 	}
+	**/
 	public function dataConnect()
 	{
 		// Create connection

@@ -7,11 +7,12 @@ require_once('Bcrypt.php');
 class login extends databaseConnect
 {
 	private $tableName = "user_account";
-	function __construct(argument)
+	/**
+	function __construct()
 	{
 		# code...
 	}
-
+	**/
 	function login_attempt($username, $password)
 	{
 		$this->dataConnect();

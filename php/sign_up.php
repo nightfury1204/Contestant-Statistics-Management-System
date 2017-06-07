@@ -10,10 +10,12 @@ class userRegister extends databaseConnection
 {
 	private userInfoTable = "user_info";
 	private userAccountTable = "user_account";
+	/**
 	function __construct()
 	{
 		# code...
 	}
+	**/
 	function addNewUser($username, $firstname, $lastname , $email, $country, $institute, $codeforcesuser, $uvauser, $password)
 	{
 		$this->dataConnect();
