@@ -32,10 +32,32 @@ class Codeforces extends databaseConnect
 
 	}
 	***/
+	function checkUsername($user)
+	{
+		$url = "".$this->baseUrl."user.info?handles=".$user;
+		//echo $url;
+		$response = file_get_contents($url);
+		if($response)
+		{
+			$res = json_decode($response,true);
+			if($res['status']==="OK")
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		else
+		{
+			return false;
+		}
+	}
 	function userSubmissions($user)
 	{
 		
-		$url = "".$this->baseUrl."user.status?handle=".$user."&from=1&count=1";
+		$url = "".$this->baseUrl."user.status?handle=".$user;
 		$response = file_get_contents($url);
 		if($response)
 		{
@@ -66,18 +88,26 @@ class Codeforces extends databaseConnect
 				$this->conection->query($sql);
 			}
 			$this->dataClose();
-			return "1";
+			return true;
 		}
 		else
 		{
-			return "-1";
+			return false;
 		}
 	}
 
 }
 
-//$userdata = new Codeforces();
+/*$userdata = new Codeforces();
 
-//$userdata->userSubmissions("nightfury1204");
+if($userdata->checkUsername("nightfury1204kjsdfhksjdfkjsdfkjdfkjdsfhksdjfhskdjfdkj"))
+{
+	echo true;
+}
+else
+{
+	echo false;
+}
+*/
 
 ?>

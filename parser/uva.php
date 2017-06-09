@@ -33,6 +33,21 @@ class Uva extends databaseConnect
 
 	}
 	***/
+	function checkUsername($user)
+	{
+		$url = $this->baseUrl."uname2uid/".$user;
+		$response = file_get_contents($url);
+		$response = trim($response);
+		//echo $response." ".strlen($response)." ";
+		if($response!="0")
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 	function getUserId($user)
 	{
 		$url = $this->baseUrl."uname2uid/".$user;
@@ -82,18 +97,26 @@ class Uva extends databaseConnect
 				$this->conection->query($sql);
 			}
 			$this->dataClose();
-			return "1";
+			return true;
 		}
 		else
 		{
-			return "-1";
+			return false;
 		}
 	}
 
 }
 
-//$userdata = new Uva();
+/*$userdata = new Uva();
 
-//$userdata->userSubmissions("nightfury1204");
+if($userdata->checkUsername("nightfury12kljfldkfjlkjfddlskfjsdlk04"))
+{
+	echo true;
+}
+else
+{
+	echo false;
+}
+*/
 
 ?>

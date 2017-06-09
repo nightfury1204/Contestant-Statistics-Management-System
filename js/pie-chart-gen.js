@@ -41,22 +41,25 @@ var Piechart = function(options){
 		start_angle = 0;
 		for (categ in this.options.data){
 			val = this.options.data[categ];
-			slice_angle = 2 * Math.PI * val / total_value;
-			var pieRadius = Math.min(this.canvas.width/2,this.canvas.height/2);
-			var labelX = this.canvas.width/2 + (pieRadius / 2) * Math.cos(start_angle + slice_angle/2);
-			var labelY = this.canvas.height/2 + (pieRadius / 2) * Math.sin(start_angle + slice_angle/2);
-		 
-			if (this.options.doughnutHoleSize){
-				var offset = (pieRadius * this.options.doughnutHoleSize ) / 2;
-				labelX = this.canvas.width/2 + (offset + pieRadius / 2) * Math.cos(start_angle + slice_angle/2);
-				labelY = this.canvas.height/2 + (offset + pieRadius / 2) * Math.sin(start_angle + slice_angle/2);               
-			}
-		 
-			var labelText = Math.round(100 * val / total_value);
-			this.ctx.fillStyle = "white";
-			this.ctx.font = "bold 20px Arial";
-			this.ctx.fillText(labelText+"%", labelX,labelY);
-			start_angle += slice_angle;
+			if(val>0)
+            {
+                slice_angle = 2 * Math.PI * val / total_value;
+                var pieRadius = Math.min(this.canvas.width/2,this.canvas.height/2);
+                var labelX = this.canvas.width/2 + (pieRadius / 2) * Math.cos(start_angle + slice_angle/2);
+                var labelY = this.canvas.height/2 + (pieRadius / 2) * Math.sin(start_angle + slice_angle/2);
+             
+                if (this.options.doughnutHoleSize){
+                    var offset = (pieRadius * this.options.doughnutHoleSize ) / 2;
+                    labelX = this.canvas.width/2 + (offset + pieRadius / 2) * Math.cos(start_angle + slice_angle/2);
+                    labelY = this.canvas.height/2 + (offset + pieRadius / 2) * Math.sin(start_angle + slice_angle/2);               
+                }
+             
+                var labelText = Math.round(100 * val / total_value);
+                this.ctx.fillStyle = "white";
+                this.ctx.font = "bold 15px Arial";
+                this.ctx.fillText(labelText+"%", labelX,labelY);
+                start_angle += slice_angle;
+            }
 		}
 		
  
@@ -65,11 +68,12 @@ var Piechart = function(options){
             color_index = 0;
             var legendHTML = "";
             for (categ in this.options.data){
-                legendHTML += "<div><span style='display:inline-block;width:20px;background-color:"+this.colors[color_index++]+";'>&nbsp;</span> "+categ+"</div>";
+                legendHTML += "<div><span style='display:inline-block;width:20px;background-color:"+this.colors[color_index++]+";'>&nbsp;</span> "+categ+"("+this.options.data[categ]+")"+"</div>";
             }
             this.options.legend.innerHTML = legendHTML;
         }
 }
+/*
 var myCanvas = document.getElementById("myCanvas");
 myCanvas.width = 200;
 myCanvas.height = 200;
@@ -105,3 +109,4 @@ var myPiechart1 = new Piechart(
     }
 );
 myPiechart1.draw();
+*/
