@@ -29,5 +29,24 @@ class userInfoClass extends databaseConnect
 			return false;
 		}
 	}
+	function checkUsername($username)
+	{
+		// return an array;
+		$this->dataConnect();
+		$sql = "SELECT * FROM ".$this->userInfoTable." WHERE username = '".$username."'";
+
+		$result = $this->conection->query($sql);
+
+		if($result->num_rows == 1)
+		{
+			$this->dataClose();
+			return true;
+		}
+		else
+		{
+			$this->dataClose();
+			return false;
+		}
+	}
 }
 ?>

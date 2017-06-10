@@ -5,7 +5,7 @@ function solvedProblemInsert(data , blockId)
     var cnt = 0;
     for(x in data)
     {
-       if(cnt%15==0)
+       if(cnt%13==0)
        {
           if(cnt==0)
           {

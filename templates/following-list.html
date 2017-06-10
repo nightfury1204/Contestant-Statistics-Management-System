@@ -12,6 +12,21 @@
     <script src="/Contestant-Statistics-Management-System/js_ext/jquery.min.js"></script>
     <script src="/Contestant-Statistics-Management-System/js_ext/bootstrap.min.js"></script>
   </head>
+   <nav class="navbar navbar-default">   
+     <div class="navbar-header">       
+       <h3 style="padding-left: 20px;">
+        <a href="/Contestant-Statistics-Management-System/">Contestant Statistics</a>
+       </h3>
+     </div>
+
+     <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right"  id="userLoginBar">
+          <!-- load -->
+        </ul>
+      </div>      
+   </nav>
+
+
   <body style="background-color: #EFF3F8;">   
 
      <div class="container" style="margin-top: 50px;background-color: #EFF3F8;">
@@ -26,11 +41,13 @@
                     <div class="modal-dialog">
                     <div class="loginmodal-container">
                       <h1>Add to Following List</h1><br>
-                      <form>
-                      <input type="text" name="user" placeholder="Username">
+                      <form id="addFollowingUser" method="POST">
+                      <input type="text" name="username" placeholder="Username" required>
+                      <!--
                       <input type="text" name="codeforcesHandle" placeholder="Codeforces username">
                       <input type="text" name="uvaHandle" placeholder="UVa username">
-                      <input type="submit" name="AddUser" class="login loginmodal-submit" value="Add">
+                      -->
+                      <input type="submit" name="AddUser" class="login loginmodal-submit">
                       </form>
                     </div>
                   </div>
@@ -38,15 +55,13 @@
            </div>
            <div class="panel-body">
 
-           <div class="modal fade" id="edit-following-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+           <div class="modal fade" id="delete-following-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                     <div class="modal-dialog">
                     <div class="loginmodal-container">
-                      <h1> Edit User</h1><br>
-                      <form>
-                      <input type="text" name="user" placeholder="Username">
-                      <input type="text" name="codeforcesHandle" placeholder="Codeforces username">
-                      <input type="text" name="uvaHandle" placeholder="UVa username">
-                      <input type="submit" name="editUser" class="login loginmodal-submit" value="Add">
+                      <h1> Delete User</h1><br>
+                      <form id="deleteFollowingUser">
+                        <input id="deleteFollowingUsername" type="text" name="username" value ="" readonly>
+                        <input type="submit" name="editUser" class="login loginmodal-submit" value="Remove">
                       </form>
                     </div>
                   </div>
@@ -55,35 +70,14 @@
            <table class="table table-bordered">
               <thead>
                 <tr>
-                  <th>Username</th>
-                  <th>Codeforces</th>
-                  <th>Uva</th>
-                  <th>total</th>
-                  <th>Edit</th>
+                  <th style="vertical-align: top;">Username </br> </th>
+                  <th>Codeforces </br><span style="font-size: 10px;">(solved | Submission)</span></th>
+                  <th>Uva </br><span style="font-size: 10px;">(solved | Submission)</span></th>
+                  <th>total </br><span style="font-size: 10px;">(solved | Submission)</span></th>
+                  <th style="vertical-align: top;">Option </br> </th>
                 </tr>                
               </thead>
-              <tbody>
-                <tr>
-                  <td>Anna</td>
-                  <td>17-02-2017</td>
-                  <td>Hi there</td>
-                  <td>C++</td>
-                  <td><a href="#" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit-following-modal">Edit user</a></td>
-                </tr>
-                <tr>
-                  <td>Uva</td>
-                  <td>Anna</td>
-                  <td>17-02-2017</td>
-                  <td>Hi there</td>
-                  <td><a href="#" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit-following-modal">Edit user</a></td>
-                </tr>
-                <tr>
-                  <td>Uva</td>
-                  <td>Anna</td>
-                  <td>17-02-2017</td>
-                  <td>Hi there</td>
-                  <td><a href="#" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit-following-modal">Edit user</a></td>
-                </tr>
+              <tbody id="userFollowingListTable">
               </tbody>
            </table>
 
@@ -101,7 +95,10 @@
    </footer>
 -->
    <!-- js script-->
-   
+   <script type="text/javascript" src="/Contestant-Statistics-Management-System/js/userlogin_navbar_otherpage.js"></script>
+   <script type="text/javascript" src="/Contestant-Statistics-Management-System/js/submit_add_following.js"></script>
+   <script type="text/javascript" src="/Contestant-Statistics-Management-System/js/submit_delete_following.js"></script>
+   <script type="text/javascript" src="/Contestant-Statistics-Management-System/js/user_following_list.js"></script>
   </body>
 
 </html>
