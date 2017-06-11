@@ -29,6 +29,21 @@ class userInfoClass extends databaseConnect
 			return false;
 		}
 	}
+	function updateUserInfo($username, $firstname,$lastname, $country, $institute,$codeforcesuser,$uvauser)
+	{
+		$this->dataConnect();
+		$sql = "UPDATE ".$this->userInfoTable." SET firstname = '".$firstname."',lastname = '".$lastname."',country ='".$country."' , institute = '".$institute."' , codeforcesuser = '".$codeforcesuser."' , uvauser = '".$uvauser."'  WHERE username= '".$username."'";
+		$result = $this->conection->query($sql);
+		$this->dataClose();
+		if($result)
+		{
+			return ture;
+		}
+		else
+		{
+			return false;
+		}
+	}
 	function checkUsername($username)
 	{
 		// return an array;

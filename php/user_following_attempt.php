@@ -4,11 +4,11 @@ require_once('user_submission.php');
 require_once('user_session.php');
 
 $userSessionData = new userSession();
-$usename = $userSessionData->userName();
+$username = $userSessionData->userName();
 
 $userFollowing = new userFollowingClass();
 
-$friendList = $userFollowing->getFollowingList($usename);
+$friendList = $userFollowing->getFollowingList($username);
 
 if($friendList)
 {

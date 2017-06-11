@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="/Contestant-Statistics-Management-System/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="/Contestant-Statistics-Management-System/js_ext/jquery.min.js"></script>
+    <script src="/Contestant-Statistics-Management-System/js_ext/bootstrap.min.js"></script>
+</head>
+ <nav class="navbar navbar-default">   
+     <div class="navbar-header">       
+       <h3 style="padding-left: 20px;">
+        <a href="/Contestant-Statistics-Management-System/">Contestant Statistics</a>
+       </h3>
+     </div>
+
+     <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right"  id="userLoginBar">
+          <!-- load -->
+        </ul>
+      </div>      
+ </nav>
+<body>
+
+<div class="container">
+    <div class="row">
+    	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+	        <div class="panel panel-info">
+	            <div class="panel-heading">
+	              <h3 class="panel-title" id="userProfileUsername">username</h3>
+	            </div>
+	            <div class="panel-body">
+	              <div class="row">
+	                <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="/Contestant-Statistics-Management-System/images/profile.png" class="img-circle img-responsive"> 
+	                </div>
+	               
+	                <div class=" col-md-9 col-lg-9 "> 
+	                  <table class="table table-user-information">
+	                    <tbody id= "userProfileInfoTable">
+
+	                    </tbody>
+	                  </table>
+	                 <!-- 
+	                  <a href="#" class="btn btn-primary">My Sales Performance</a>
+	                  <a href="#" class="btn btn-primary">Team Sales Performance</a>
+	                 -->
+	                </div>
+	              </div>
+	            </div>
+	            <div class="panel-footer">	                
+	                <a href="#" data-toggle="modal" data-target="#editUser-modal" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+	            </div>
+			    <div class="modal fade" id="editUser-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+		        	<div class="modal-dialog">
+		          		<div class="loginmodal-container">
+		            		<h1>Edit User Info</h1><br>
+				            <form id="userEditInfoSubmit" method="POST">
+				              First name:
+				              <input type="text" id="userFirstname" name="firstname" placeholder="first name">
+				              Last name:
+				              <input type="text" id="userLastname" name="lastname" placeholder="last name">
+				              Country:
+				              <input type="text" id="userCountry" name="country" placeholder="country">
+				              Institute:
+				              <input type="text" id="userInstitute" name="institute" placeholder="institute">
+				              Codeforces username:
+				              <input type="text" id="userCodeforces"name="codeforcesuser" placeholder="codeforces username">
+				              Uva username:
+				              <input type="text" id="userUva" name="uvauser" placeholder="uva username">
+				              <input type="submit" name="login" class="login loginmodal-submit" value= "Save">
+				            </form>
+		          		</div>
+		        	</div>
+		      </div>
+           
+	        </div>
+        </div>
+    </div>
+</div>
+    <script type="text/javascript" src="/Contestant-Statistics-Management-System/js/userlogin_navbar_otherpage.js"></script>
+    <script type="text/javascript" src="/Contestant-Statistics-Management-System/js/user_profile.js"></script>
+    <script type="text/javascript" src="/Contestant-Statistics-Management-System/js/submit_user_profile_edit.js"></script>
+</body>
+</html>
